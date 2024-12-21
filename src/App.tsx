@@ -27,6 +27,7 @@ function App() {
       }
       const data: Dessert[] = await response.json()
       setDesserts(data)
+      console.log(data[0].price)
     } catch(error) {
       console.error("Error fetching desserts", error)
     }

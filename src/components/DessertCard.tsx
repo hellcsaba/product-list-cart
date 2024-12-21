@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './dessert-card.scss'
 
 interface ImageProps {
   thumbnail: string;
@@ -27,7 +28,7 @@ const DessertCard: React.FC<DessertCardProps> = ({ name, category, price, image 
         <source srcSet={image.desktop} media="(min-width: 64rem)" />
         <source srcSet={image.tablet} media="(min-width: 48rem)" />
         <source srcSet={image.mobile} media="(min-width: 30rem)" />
-        <img src={image.thumbnail} alt={name} />
+        <img className="dessert__image" src={image.thumbnail} alt={name} />
       </picture>
       {quantity === 0 ? (
         <button className='dessert__buy-button dessert__button--cart' onClick={handleAddToCart}><img src="/assets/images/icon-add-to-cart.svg" alt="Cart icon"/>Add to Cart</button>
@@ -50,7 +51,7 @@ const DessertCard: React.FC<DessertCardProps> = ({ name, category, price, image 
       )}
       <p className='dessert__category'>{category}</p>
       <h3 className='dessert__name'>{name}</h3>
-      <p className='dessert__price'>${price}</p>
+      <p className='dessert__price'>${price.toFixed(2)}</p>
     </article>
   )
 };
