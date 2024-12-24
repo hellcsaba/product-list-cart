@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import DessertCard from './components/DessertCard';
+import CartItem from './components/CartItem';
 
 interface ImageProps {
   thumbnail: string;
@@ -54,6 +55,7 @@ function App() {
           ))}
         </section>
         <section>
+        <CartItem name="Classic Tiramisu" price={1} amount={2} />
         </section>
       </main>
     </>
