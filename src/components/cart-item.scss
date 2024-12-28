@@ -1,0 +1,52 @@
+@use '/src/index.scss' as index;
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: index.$rose-50;
+    font-size: 0.875rem;
+
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+
+    &__name {
+        font-size: 0.875rem;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1rem;
+    }
+
+    &__amount {
+        font-weight: 600;
+        color: index.$red;
+    }
+
+    &__price-per-item {
+        color: index.$rose-500;
+    }
+
+    &__total-price {
+        color: index.$rose-500;
+        font-weight: 600;
+    }
+
+    &__remove-button {
+        all: unset;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        border: 2px solid index.$rose-300;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

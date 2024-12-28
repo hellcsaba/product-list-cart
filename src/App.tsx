@@ -55,7 +55,7 @@ function App() {
           ))}
         </section>
         <section>
-        <CartItem name="Classic Tiramisu" price={1} amount={2} />
+        <CartItem name="Classic Tiramisu" price={5.5} amount={1} />
         </section>
       </main>
     </>
