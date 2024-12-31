@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './App.scss'
 import DessertCard from './components/DessertCard';
 import Cart from './components/Cart';
 
@@ -44,21 +44,21 @@ function App() {
   }
 
   return (
-    <>
-      <header>
-        <h1>Desserts</h1>
+    <article className='app-container'>
+      <header className='app-header'>
+        <h1 className='app-header__title'>Desserts</h1>
       </header>
-      <main>
-        <section>
+      <main className='app-main'>
+        <section className='app-main__desserts'>
           {desserts.map((dessert, index) => (
             <DessertCard key={index} {...mapDessertToCardProps(dessert)}/>
           ))}
         </section>
-        <section>
+        <section className='app-main__cart'>
           <Cart/>
         </section>
       </main>
-    </>
+    </article>
   )
 }
 
