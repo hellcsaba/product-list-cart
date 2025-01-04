@@ -5,9 +5,10 @@ interface CartItemProps {
     name: string,
     price: number,
     amount: number
+    onRemoveItem: () => void;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ name, price, amount }) => {
+const CartItem: React.FC<CartItemProps> = ({ name, price, amount, onRemoveItem }) => {
 
     const totalPrice = (price: number, amount: number) => price * amount
 
@@ -21,7 +22,7 @@ const CartItem: React.FC<CartItemProps> = ({ name, price, amount }) => {
                     <span className="cart-item__total-price">$ {totalPrice(price, amount)}</span>
                 </div>
             </div>
-            <button className="cart-item__remove-button"><img className="cart-item__remove-icon" src='/assets/images/icon-remove-item.svg' alt='Remove item'></img></button>
+            <button className="cart-item__remove-button" onClick={onRemoveItem}><img className="cart-item__remove-icon" src='/assets/images/icon-remove-item.svg' alt='Remove item'></img></button>
         </div>
     )
 }
