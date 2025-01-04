@@ -6,16 +6,19 @@
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 1.5rem;
 
     &__title {
         color: index.$red;
+        align-self: start;
     }
 
     &__empty-image {
-        width: 100%;
-        height: 100%;
+        width: auto;
+        height: auto;
         display: block;
+        justify-self: center;
     }
 
     &__empty-text {

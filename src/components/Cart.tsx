@@ -31,7 +31,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem }) => {
       ) : (
         <div className="cart__empty">
           <img
-            className="cart_empty-image"
+            className="cart__empty-image"
             src="../../assets/images/illustration-empty-cart.svg"
             alt="Empty cart"
           ></img>
