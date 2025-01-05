@@ -14,6 +14,7 @@ interface DessertCardProps {
   price: number;
   image: ImageProps;
   amount: number;
+  isInCart: boolean;
   onAddToCart: () => void;
   onUpdateItemAmount: (amount: number) => void;
 }
@@ -41,7 +42,11 @@ const DessertCard: React.FC<DessertCardProps> = ({
         <source srcSet={image.desktop} media="(min-width: 64rem)" />
         <source srcSet={image.tablet} media="(min-width: 48rem)" />
         <source srcSet={image.mobile} media="(min-width: 30rem)" />
-        <img className="dessert__image" src={image.thumbnail} alt={name} />
+        <img
+          className={`dessert__image ${amount > 0 ? "dessert__image--in-cart" : ""}`}
+          src={image.thumbnail}
+          alt={name}
+        />
       </picture>
       {amount === 0 ? (
         <button className="dessert__buy-button dessert__button--cart" onClick={onAddToCart}>

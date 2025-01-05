@@ -10,9 +10,13 @@
     row-gap: 0.375rem;
 
     &__image {
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         max-width: 16rem;
         margin-block-end: 1.5rem;
+
+        &--in-cart {
+            border: 0.125rem solid index.$red;
+        }
     }
 
     &__buy-button {
