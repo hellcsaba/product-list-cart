@@ -14,7 +14,6 @@ interface DessertCardProps {
   price: number;
   image: ImageProps;
   amount: number;
-  isInCart: boolean;
   onAddToCart: () => void;
   onUpdateItemAmount: (amount: number) => void;
 }
