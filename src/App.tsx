@@ -2,30 +2,11 @@ import { useEffect, useState } from "react";
 import "./App.scss";
 import DessertCard from "./components/DessertCard";
 import Cart from "./components/Cart";
-
-interface ImageProps {
-  thumbnail: string;
-  mobile: string;
-  tablet: string;
-  desktop: string;
-}
-
-interface Dessert {
-  name: string;
-  category: string;
-  price: number;
-  image: ImageProps;
-}
-
-interface CartItem {
-  name: string;
-  price: number;
-  amount: number;
-}
+import { CartItemData, Dessert } from "./models/types";
 
 function App() {
   const [desserts, setDesserts] = useState<Dessert[]>([]);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItemData[]>([]);
 
   const fetchDesserts = async () => {
     try {
@@ -51,14 +32,14 @@ function App() {
   };
 
   const handleAddToCart = (dessert: Dessert) => {
-    setCartItems((prevCartItems: CartItem[]) => {
-      const existingItemIndex = prevCartItems.findIndex((item: CartItem) => item.name === dessert.name);
+    setCartItems((prevCartItems: CartItemData[]) => {
+      const existingItemIndex = prevCartItems.findIndex((item: CartItemData) => item.dessert.name === dessert.name);
       if (existingItemIndex !== -1) {
         const updatedCart = [...prevCartItems];
         updatedCart[existingItemIndex].amount += 1;
         return updatedCart;
       } else {
-        return [...prevCartItems, { ...dessert, amount: 1 }];
+        return [...prevCartItems, { dessert, amount: 1 }];
       }
     });
   };
@@ -66,7 +47,7 @@ function App() {
   const handleUpdateCartItemAmount = (name: string, quantity: number) => {
     setCartItems((prevCartItems) => {
       const incrementedCart = prevCartItems.map((item) =>
-        item.name === name ? { ...item, amount: item.amount + quantity } : item
+        item.dessert.name === name ? { ...item, amount: item.amount + quantity } : item
       );
       const updatedCart = incrementedCart.filter((item) => item.amount > 0);
       return updatedCart;
@@ -74,7 +55,7 @@ function App() {
   };
 
   const handleRemoveItem = (name: string) => {
-    setCartItems((prevCart) => prevCart.filter((item) => item.name !== name));
+    setCartItems((prevCart) => prevCart.filter((item) => item.dessert.name !== name));
   };
 
   return (
@@ -85,7 +66,7 @@ function App() {
       <main className="app-main">
         <section className="app-main__desserts">
           {desserts.map((dessert, index) => {
-            const cartItem = cartItems.find((item) => item.name === dessert.name);
+            const cartItem = cartItems.find((item) => item.dessert.name === dessert.name);
             return (
               <DessertCard
                 key={index}

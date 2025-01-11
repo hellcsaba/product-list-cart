@@ -1,0 +1,100 @@
+@use '/src/index.scss' as index;
+@use "sass:color";
+
+.order {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: index.$rose-50;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    z-index: 1001;
+    width: 33%;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 0.5rem;
+    }
+  
+    &__confirm-icon {
+      display: block;
+      width: 2rem;
+    }
+  
+    &__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: index.$rose-900;
+    }
+  
+    &__message {
+      font-size: 1rem;
+      padding-block-end: 1rem;
+      color: index.$rose-500;
+    }
+  
+    &__items {
+      margin-bottom: 1rem;
+    }
+  
+    &__summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: index.$rose-100;
+        padding-block: 1rem;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    &__summary-label {
+        color: index.$rose-900;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    &__summary-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: index.$rose-900;
+    }
+  
+    &__new-button {
+        all: unset;
+        box-sizing: border-box;
+        border-radius: 2rem;
+        background-color: index.$red;
+        color: index.$rose-100;
+        padding: 1rem;
+        margin-block-start: 1.5rem;
+        width: 100%;
+        text-align: center;
+        display: block;
+
+        &:hover {
+            cursor: pointer;
+            background-color: color.adjust(index.$red, $alpha: -0.25);
+        }
+
+        &:active {
+            cursor: pointer;
+            background-color: color.adjust(index.$red, $lightness: -10%);
+        }
+    }
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  

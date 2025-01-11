@@ -1,26 +1,32 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import CartItem from "./CartItem";
 import "./cart.scss";
-
-interface CartItem {
-  name: string;
-  price: number;
-  amount: number;
-}
+import ConfirmOrderDialog from "./ConfirmOrderDialog";
+import { CartItemData } from "../models/types";
 
 interface CartProps {
-  cartItems: CartItem[];
+  cartItems: CartItemData[];
   onRemoveItem: (name: string) => void;
 }
 
 const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem }) => {
-  const mapCartItemProps = (item: CartItem) => {
-    const { name, price, amount } = item;
-    return { name, price, amount };
+  const [isDialogVisible, setDialogVisible] = useState(false);
+
+  const handleOrderConfirm = () => {
+    console.log("Order Confirmed!");
+    setDialogVisible(false);
+  };
+
+  const mapCartItemProps = (item: CartItemData) => {
+    return {
+      name: item.dessert.name,
+      price: item.dessert.price,
+      amount: item.amount,
+    };
   };
 
   const totalPrice = useMemo(() => {
-    return cartItems.reduce((sum, item) => sum + item.price * item.amount, 0);
+    return cartItems.reduce((sum, item) => sum + item.dessert.price * item.amount, 0);
   }, [cartItems]);
 
   const totalAmount = useMemo(() => {
@@ -34,7 +40,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem }) => {
         <>
           <div className="cart__items">
             {cartItems.map((item, index) => (
-              <CartItem key={index} {...mapCartItemProps(item)} onRemoveItem={() => onRemoveItem(item.name)} />
+              <CartItem key={index} {...mapCartItemProps(item)} onRemoveItem={() => onRemoveItem(item.dessert.name)} />
             ))}
           </div>
           <div className="cart__summary">
@@ -51,7 +57,15 @@ const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem }) => {
               This is a <strong>carbon-neutral</strong> delivery
             </span>
           </div>
-          <button className="cart__confirm-order-button">Confirm Order</button>
+          <button className="cart__confirm-order-button" onClick={() => setDialogVisible(true)}>
+            Confirm Order
+          </button>
+          <ConfirmOrderDialog
+            orderItems={cartItems}
+            isVisible={isDialogVisible}
+            onClose={() => setDialogVisible(false)}
+            onConfirm={() => handleOrderConfirm()}
+          />
         </>
       ) : (
         <div className="cart__empty">
