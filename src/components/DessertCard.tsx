@@ -39,11 +39,10 @@ const DessertCard: React.FC<DessertCardProps> = ({
     <article className="dessert">
       <picture className="dessert__picture">
         <source srcSet={image.desktop} media="(min-width: 64rem)" />
-        <source srcSet={image.tablet} media="(min-width: 48rem)" />
-        <source srcSet={image.mobile} media="(min-width: 30rem)" />
+        <source srcSet={image.tablet} media="(min-width: 50rem)" />
         <img
           className={`dessert__image ${amount > 0 ? "dessert__image--in-cart" : ""}`}
-          src={image.thumbnail}
+          src={image.mobile}
           alt={name}
         />
       </picture>
