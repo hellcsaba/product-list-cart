@@ -20,24 +20,26 @@
     }
   
     &__confirm-icon {
-      display: block;
-      width: 2rem;
+        display: block;
+        width: 2rem;
     }
   
     &__title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: index.$rose-900;
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: index.$rose-900;
     }
   
     &__message {
-      font-size: 1rem;
-      padding-block-end: 1rem;
-      color: index.$rose-500;
+        font-size: 1rem;
+        padding-block-end: 1rem;
+        color: index.$rose-500;
     }
   
     &__items {
-      margin-bottom: 1rem;
+        margin-bottom: 1rem;
+        background-color: index.$rose-100;
+        border-radius: 0.5rem;
     }
   
     &__summary {

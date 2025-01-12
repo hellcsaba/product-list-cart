@@ -1,4 +1,5 @@
 import React from "react";
+import "./order-item.scss";
 
 interface OrderItemProps {
   name: string;
@@ -17,10 +18,10 @@ const OrderItem: React.FC<OrderItemProps> = ({ name, price, amount, image }) => 
         <h3 className="order-item__name">{name}</h3>
         <div className="order-item__details">
           <span className="order-item__amount">x{amount}</span>
-          <span className="order-item__price-per-piece">@ {price}</span>
+          <span className="order-item__price-per-item">@ {price.toFixed(2)}</span>
         </div>
       </div>
-      <span className="order__item-price">${totalPrice(price, amount).toFixed(2)}</span>
+      <span className="order-item__price">${totalPrice(price, amount).toFixed(2)}</span>
     </div>
   );
 };

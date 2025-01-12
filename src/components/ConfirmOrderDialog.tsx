@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import OrderItem from "./OrderItem";
 import { CartItemData } from "../models/types";
 import "./confirm-order-dialog.scss";
@@ -20,8 +20,11 @@ const ConfirmOrderDialog: React.FC<ConfirmOrderDialogProps> = ({ orderItems, isV
     };
   };
 
-  if (!isVisible) return null;
+  const totalPrice = useMemo(() => {
+    return orderItems.reduce((sum, item) => sum + item.dessert.price * item.amount, 0);
+  }, [orderItems]);
 
+  if (!isVisible) return null;
   return (
     <>
       <div className="modal-backdrop" onClick={onClose}></div>
@@ -40,10 +43,10 @@ const ConfirmOrderDialog: React.FC<ConfirmOrderDialogProps> = ({ orderItems, isV
             {orderItems.map((item: CartItemData, index) => (
               <OrderItem key={index} {...mapOrderItem(item)} />
             ))}
-          </div>
-          <div className="order__summary">
-            <span className="order__summary-label">Order Total</span>
-            <span className="order__summary-price">$46.50</span>
+            <div className="order__summary">
+              <span className="order__summary-label">Order Total</span>
+              <span className="order__summary-price">${totalPrice.toFixed(2)}</span>
+            </div>
           </div>
           <button className="order__new-button" onClick={onConfirm}>
             Start New Order
