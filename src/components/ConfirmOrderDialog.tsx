@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import OrderItem from "./OrderItem";
 import { CartItemData } from "../models/types";
 import "./confirm-order-dialog.scss";
@@ -19,6 +19,18 @@ const ConfirmOrderDialog: React.FC<ConfirmOrderDialogProps> = ({ orderItems, isV
       image: item.dessert.image.thumbnail,
     };
   };
+
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isVisible]);
 
   const totalPrice = useMemo(() => {
     return orderItems.reduce((sum, item) => sum + item.dessert.price * item.amount, 0);

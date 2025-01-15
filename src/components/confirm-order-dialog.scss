@@ -99,4 +99,31 @@
     z-index: 1000;
   }
 
+@media (max-width: 50rem) {
+    .order {
+        position: fixed;
+        left: 50%;
+        width: 100%;
+        top: 55%;
+        height: 90vh;
+        border-radius: 1rem 1rem 0 0;
+        overflow: scroll;
+
+        &__title {
+            font-size: 2.5rem;
+        }
+
+        &__confirm-icon {
+            width: 2.5rem;
+        }
+
+        &__new-button {
+            position: sticky;
+            bottom: 1rem; 
+        }
+    }
+
+   
+}
+
   
