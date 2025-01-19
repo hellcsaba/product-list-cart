@@ -58,6 +58,10 @@ function App() {
     setCartItems((prevCart) => prevCart.filter((item) => item.dessert.name !== name));
   };
 
+  const onOrderSubmit = () => {
+    setCartItems([]);
+  };
+
   return (
     <article className="app-container">
       <header className="app-header">
@@ -79,7 +83,7 @@ function App() {
           })}
         </section>
         <section className="app-main__cart">
-          <Cart cartItems={cartItems} onRemoveItem={handleRemoveItem} />
+          <Cart cartItems={cartItems} onRemoveItem={handleRemoveItem} onOrderSubmit={onOrderSubmit} />
         </section>
       </main>
     </article>

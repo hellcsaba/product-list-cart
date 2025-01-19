@@ -7,13 +7,15 @@ import { CartItemData } from "../models/types";
 interface CartProps {
   cartItems: CartItemData[];
   onRemoveItem: (name: string) => void;
+  onOrderSubmit: () => void;
 }
 
-const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem }) => {
+const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem, onOrderSubmit }) => {
   const [isDialogVisible, setDialogVisible] = useState(false);
 
   const handleOrderConfirm = () => {
     console.log("Order Confirmed!");
+    onOrderSubmit();
     setDialogVisible(false);
   };
 

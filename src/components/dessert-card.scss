@@ -87,9 +87,19 @@
         justify-content: center;
         align-items: center;
         font-size: .875rem;
+        
+        &:hover {
+            background-color: index.$rose-50;
+        }
     }
+
+    &__quantity-button:hover > svg path {
+        fill: index.$red;
+      }
 
     &__quantity {
         color: index.$rose-50;
     }
-}
+
+}  
+  

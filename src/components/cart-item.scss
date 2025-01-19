@@ -54,6 +54,11 @@
 
         &:hover {
             cursor: pointer;
+            border: 2px solid index.$rose-900;
         }
+    }
+
+    &__remove-button:hover > svg path {
+        fill: index.$rose-900;
     }
 }
