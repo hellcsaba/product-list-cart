@@ -52,7 +52,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem, onOrderSubmit }) =
           <div className="cart__carbon-neutral">
             <img
               className="cart__carbon-neutral-icon"
-              src="../../assets/images/icon-carbon-neutral.svg"
+              src={`${import.meta.env.BASE_URL}assets/images/icon-carbon-neutral.svg`}
               alt="Carbon neutral"
             />
             <span className="cart__carbon-neutral-text">
@@ -73,7 +73,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, onRemoveItem, onOrderSubmit }) =
         <div className="cart__empty">
           <img
             className="cart__empty-image"
-            src="../../assets/images/illustration-empty-cart.svg"
+            src={`${import.meta.env.BASE_URL}assets/images/illustration-empty-cart.svg`}
             alt="Empty cart"
           ></img>
           <p className="cart__empty-text">Your added items will appear here</p>

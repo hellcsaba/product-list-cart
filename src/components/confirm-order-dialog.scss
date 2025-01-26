@@ -2,6 +2,8 @@
 @use "sass:color";
 
 .order {
+    max-height: 90vh;
+    overflow-y: auto;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -11,6 +13,11 @@
     border-radius: 0.5rem;
     z-index: 1001;
     width: 33%;
+    margin-block-end: 2rem;
+
+    &::-webkit-scrollbar {
+        display: none;
+      }
 
     &__header {
         display: flex;

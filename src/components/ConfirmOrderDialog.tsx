@@ -44,7 +44,7 @@ const ConfirmOrderDialog: React.FC<ConfirmOrderDialogProps> = ({ orderItems, isV
         <header className="order__header">
           <img
             className="order__confirm-icon"
-            src="../../assets/images/icon-order-confirmed.svg"
+            src={`${import.meta.env.BASE_URL}assets/images/icon-order-confirmed.svg`}
             alt="Order confirmed"
           ></img>
           <h1 className="order__title">Order Confirmed</h1>

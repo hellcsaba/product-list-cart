@@ -48,7 +48,7 @@ const DessertCard: React.FC<DessertCardProps> = ({
       </picture>
       {amount === 0 ? (
         <button className="dessert__buy-button dessert__button--cart" onClick={onAddToCart}>
-          <img src="/assets/images/icon-add-to-cart.svg" alt="Cart icon" />
+          <img src={`${import.meta.env.BASE_URL}assets/images/icon-add-to-cart.svg`} alt="Cart icon" />
           Add to Cart
         </button>
       ) : (
