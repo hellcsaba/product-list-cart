@@ -48,6 +48,8 @@ Users should be able to:
 - Flexbox, CSS Grid
 - Desktop-first workflow
 - [React](https://react.dev/) - JS library
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/) - build tool
 
 ## Author
 
